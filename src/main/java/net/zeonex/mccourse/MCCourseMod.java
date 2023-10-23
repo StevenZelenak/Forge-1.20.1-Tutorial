@@ -1,6 +1,7 @@
 package net.zeonex.mccourse;
 
 import com.mojang.logging.LogUtils;
+import net.zeonex.mccourse.block.ModBlocks;
 import net.zeonex.mccourse.item.Moditems;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
@@ -27,6 +28,7 @@ public class MCCourseMod
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         Moditems.register(modEventBus);
+        ModBlocks.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
@@ -45,6 +47,15 @@ public class MCCourseMod
         if(event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             event.accept(Moditems.ALEXANDRITE);
             event.accept(Moditems.RAW_ALEXANDRITE);
+        }
+
+        if(event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
+            event.accept(ModBlocks.ALEXANDRITE_BLOCK);
+            event.accept(ModBlocks.RAW_ALEXANDRITE_BLOCK);
+            event.accept(ModBlocks.ALEXANDRITE_ORE);
+            event.accept(ModBlocks.NETHER_ALEXANDRITE_ORE);
+            event.accept(ModBlocks.DEEPSLATE_ALEXANDRITE_ORE);
+            event.accept(ModBlocks.END_STONE_ALEXANDRITE_ORE);
         }
     }
 
